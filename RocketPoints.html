@@ -371,68 +371,60 @@ function followChannel() {
         
 
         // Function to handle following the 
+// Function to handle the points update button
+function handlePointsUpdate() {
+    const now = Date.now();
+    if (now - lastUpdateTimestamp < updateInterval) {
+        alert("You can only update points once every 12 hours.");
+        return;
+    }
 
-        // Function to handle the points update button
-        function handlePointsUpdate() {
-            const now = Date.now();
-            if (now - lastUpdateTimestamp < updateInterval) {
-                alert("You can only update points once every 12 hours.");
-                return;
-            }
+    // Set the last update timestamp
+    lastUpdateTimestamp = now;
+    localStorage.setItem('lastUpdateTimestamp', lastUpdateTimestamp);
 
-            showModal('form-submission-modal');
-            setTimeout(() => {
-                closeModal();
-                lastUpdateTimestamp = now;
-                localStorage.setItem('lastUpdateTimestamp', lastUpdateTimestamp);
-            }, 3000);
+    // Show the success modal
+    showModal('form-submission-modal');
+
+    // Wait for a few seconds before closing the modal and updating the token count
+    setTimeout(() => {
+        closeModal();
+        updateTimeCounter(); // Update the time counter message
+        document.getElementById('submit-button').classList.add('disabled-button');
+        document.getElementById('submit-button').disabled = true;
+    }, 3000);
+}
+
+// Event listener for form submission
+document.getElementById('token-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Ensure the latest token count is used
+    const tokenField = document.getElementById('tokens');
+    tokenField.value = localStorage.getItem('tokens') || '0';
+
+    // Call handlePointsUpdate() function
+    handlePointsUpdate();
+
+    // Simulate form submission
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new FormData(event.target)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Optionally, handle success
+            console.log('Form submitted successfully!');
+        } else {
+            alert('Failed to submit data. Please try again.');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
 
-        // Function to update the time counter message
-        function updateTimeCounter() {
-            const now = Date.now();
-            const timeLeft = Math.max(0, updateInterval - (now - lastUpdateTimestamp));
-            if (timeLeft > 0) {
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                document.getElementById('update-time-message').innerText = `Wait until ${hours}h ${minutes}m ${seconds}s`;
-            } else {
-                document.getElementById('update-time-message').innerText = '';
-            }
-        }
-
-        // Event listener for form submission
-        document.getElementById('token-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            // Ensure the latest token count is used
-            const tokenField = document.getElementById('tokens');
-            tokenField.value = localStorage.getItem('tokens') || '0';
-
-            // Call handlePointsUpdate() function
-            handlePointsUpdate();
-
-            // Simulate form submission
-            fetch(event.target.action, {
-                method: 'POST',
-                body: new FormData(event.target)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Optionally, handle success
-                    setTimeout(() => {
-                        closeModal(); // Close the popup after a few seconds
-                    }, 3000); // Adjust timing as needed
-                } else {
-                    alert('Failed to submit data. Please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again.');
-            });
-        });
 
         // Initialize the state of the "Update Points!" button
         document.addEventListener('DOMContentLoaded', function() {
