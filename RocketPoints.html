@@ -15,7 +15,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black; /* Same as body background */
+    background-color: #0f0b4a; /* Same as body background */
     z-index: 2000;
     transition: opacity 1s ease;
     opacity: 1;
@@ -256,11 +256,7 @@
         </div>
     </div>
 
-    <div id="submission-modal" class="modal">
-        <div class="modal-content">
-            <h2>Your data has been submitted!</h2>
-            <button onclick="closeModal()">Close</button>
-        </div>
+   
     </div>
 
     <!-- Form submission modal for success message -->
@@ -326,41 +322,55 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('token-number').innerText = tokens;
 
         // Function to handle sharing tokens
+        
         function shareTokens() {
-            if (shareCount >= 5) {
-                alert("You have reached the maximum number of shares!");
-                return;
-            }
+        // Generate a unique referral ID (you can customize this)
+        const referralId = 'REF' + Math.floor(Math.random() * 1000000);
+        
+        // Open Telegram with a predefined message containing the referral ID
+        const telegramMessage = `Join our channel using this referral link and earn points! Referral ID: ${referralId}`;
+        const telegramLink = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)}`;
+        window.open(telegramLink, '_blank');
+        
+        // Delay for 60 seconds before awarding points
+        setTimeout(() => {
+            let tokens = parseInt(localStorage.getItem('tokens')) || 0;
+            tokens += 30;
+            localStorage.setItem('tokens', tokens);
+            document.getElementById('token-number').innerText = tokens;
+        }, 60000); // 60 seconds (1 minute)
+    }
+    
+    
 
-            showModal('submission-modal');
+function followChannel() {
+    if (hasFollowed) {
+        alert("You have already followed the channel!");
+        return;
+    }
 
-            setTimeout(() => {
-                tokens += 10;
-                localStorage.setItem('tokens', tokens);
-                document.getElementById('token-number').innerText = tokens;
+    showModal('submission-modal'); // Show submission modal immediately
 
-                shareCount++;
-                localStorage.setItem('shareCount', shareCount);
-            }, 3000);
-        }
+    // Delay for 60 seconds before awarding points
+    setTimeout(() => {
+        tokens += 1000;
+        localStorage.setItem('tokens', tokens);
+        document.getElementById('token-number').innerText = tokens;
+        localStorage.setItem('hasFollowed', 'true');
+        hasFollowed = true;
 
-        // Function to handle following the channel
-        function followChannel() {
-            if (hasFollowed) {
-                alert("You have already followed the channel!");
-                return;
-            }
+        // Close the submission modal after awarding points
+        closeModal();
+    }, 60000); // 60 seconds (1 minute)
 
-            showModal('submission-modal');
+    // Redirect to the Telegram channel immediately
+    window.location.href = 'https://t.me/RocketPoints';
+}
 
-            setTimeout(() => {
-                tokens += 1000;
-                localStorage.setItem('tokens', tokens);
-                document.getElementById('token-number').innerText = tokens;
-                localStorage.setItem('hasFollowed', 'true');
-                hasFollowed = true;
-            }, 3000);
-        }
+
+        
+
+        // Function to handle following the 
 
         // Function to handle the points update button
         function handlePointsUpdate() {
