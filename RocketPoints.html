@@ -304,7 +304,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     userName = "User";
                 }
             }
-            document.getElementById('greeting-text').innerText = Hi, ${userName}!;
+            document.getElementById('greeting-text').innerText = `Hi, ${userName}!`;
             document.getElementById('user-name').value = userName; // Set the hidden field value
         }
 
@@ -328,8 +328,8 @@ window.addEventListener('DOMContentLoaded', () => {
         const referralId = 'REF' + Math.floor(Math.random() * 1000000);
         
         // Open Telegram with a predefined message containing the referral ID
-        const telegramMessage = Join our channel using this referral link and earn points! Referral ID: ${referralId};
-        const telegramLink = https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)};
+        const telegramMessage = `Join our channel using this referral link and earn points! Referral ID: ${referralId}`;
+        const telegramLink = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)}`;
         window.open(telegramLink, '_blank');
         
         // Delay for 60 seconds before awarding points
