@@ -7,77 +7,78 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <style>
-        .splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0f0b4a; /* Same as body background */
-            z-index: 2000;
-            transition: opacity 1s ease;
-            opacity: 1;
-        }
+    
+    
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0f0b4a; /* Same as body background */
+    z-index: 2000;
+    transition: opacity 1s ease;
+    opacity: 1;
+}
 
-        .rocket {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.rocket {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .rocket-image {
-            width: 100px; /* Adjust size as needed */
-            transition: transform 4s ease;
-        }
+.rocket-image {
+    width: 100px; /* Adjust size as needed */
+    transition: transform 4s ease;
+}
 
-        .smoke {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            animation: smoke-animation 4s infinite;
-            margin-top: 10px;
-        }
+.smoke {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: smoke-animation 4s infinite;
+    margin-top: 10px;
+}
 
-        @keyframes smoke-animation {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-        }
+@keyframes smoke-animation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
 
-        .rocket.animate {
-            animation: rocket-fly 4s ease forwards;
-        }
+.rocket.animate {
+    animation: rocket-fly 4s ease forwards;
+}
 
-        @keyframes rocket-fly {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-100vh); /* Moves the rocket to the top */
-            }
-        }
+@keyframes rocket-fly {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh); /* Moves the rocket to the top */
+    }
+}
 
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 
+    
         body {
             background-color: #0f0b4a;
         }
-
         .catts-text {
             font-family: 'Raleway', sans-serif;
             font-size: 1.5rem; /* Adjust the size as needed */
         }
-
         .modal {
             position: fixed;
             top: 0;
@@ -93,12 +94,10 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-
         .modal.active {
             opacity: 1;
             visibility: visible;
         }
-
         .modal-content {
             background-color: #2c2c2c;
             padding: 20px;
@@ -106,13 +105,11 @@
             text-align: center;
             border: 2px dashed #fbbf24;
         }
-
         .modal-content h2 {
             font-family: 'Poppins', sans-serif;
             font-size: 2rem;
             color: #fbbf24;
         }
-
         .modal-content button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -124,16 +121,13 @@
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s ease;
         }
-
         .modal-content button:hover {
             background-color: #e8a823;
         }
-
         footer {
             border-top: 2px solid #fbbf24;
             border-radius: 15px 15px 0 0;
         }
-
         .circle-icon {
             display: inline-block;
             width: 10px;
@@ -143,7 +137,6 @@
             margin-right: 10px;
             vertical-align: middle;
         }
-
         .follow-card {
             background-color: #2c2c2c;
             border: 2px solid #fbbf24;
@@ -154,13 +147,11 @@
             max-width: 300px; /* Adjust width to fit the screen */
             margin: 0 auto; /* Center the card horizontally */
         }
-
         .follow-card h2 {
             font-family: 'Poppins', sans-serif;
             color: #fbbf24;
             font-size: 1rem;
         }
-
         .follow-button {
             margin-top: 4px;
             padding: 10px 15px;
@@ -172,11 +163,9 @@
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s ease;
         }
-
         .follow-button:hover {
             background-color: #e8a823;
         }
-
         .submit-button {
             margin-top: 4px;
             padding: 10px 15px;
@@ -188,11 +177,9 @@
             font-family: 'Poppins', sans-serif;
             transition: background-color 0.3s ease;
         }
-
         .submit-button:hover {
             background-color: #2f9f80;
         }
-
         .disabled-button {
             background-color: #4a4a4a;
             cursor: not-allowed;
@@ -201,13 +188,15 @@
 </head>
 <body class="bg-gray-900 text-white flex flex-col justify-between min-h-screen">
 
-    <div id="splash-screen" class="splash-screen flex items-center justify-center">
-        <div class="rocket">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMG6TZi7SoaKF7FOIlipx7pQ8BEsKrE9EQiDEHHNZeNZTsjsYeo1BE1MPsdk0HaYTVSqY4lI7Oitdc7nmyqky_FWEKDv28uuODirrVK9_aSEgMv-vA9SB_502SowbZpbvKNup5_BFYvmwtLui79XgDcdUMf_zPDrjmqka2NpqDtmusth04iClr1hm9uo8/s500/rocket-removebg-preview.png" alt="Rocket" class="rocket-image">
-            <div class="smoke"></div>
-        </div>
+   
+<div id="splash-screen" class="splash-screen flex items-center justify-center">
+    <div class="rocket">
+        <img src=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMG6TZi7SoaKF7FOIlipx7pQ8BEsKrE9EQiDEHHNZeNZTsjsYeo1BE1MPsdk0HaYTVSqY4lI7Oitdc7nmyqky_FWEKDv28uuODirrVK9_aSEgMv-vA9SB_502SowbZpbvKNup5_BFYvmwtLui79XgDcdUMf_zPDrjmqka2NpqDtmusth04iClr1hm9uo8/s500/rocket-removebg-preview.png" alt="Rocket" class="rocket-image">
+        <div class="smoke"></div>
     </div>
+</div>
 
+   
     <div class="flex flex-col items-center">
         <div class="follow-card">
             <h2>Follow our Channel to Earn More Points!</h2>
@@ -234,97 +223,221 @@
         <div class="rounded-full overflow-hidden h-40 w-40 mb-6 border-4 border-yellow-400">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQDsXYaQo8WKdEjtPJbE3UvcHJruLoIyUIOSBppRs9Q3jbBq1dwN823CXm9AXhJ42lNUEXFG-V-G66nw97moKAj78raBODaBItMXMGERrlczqLGc6jyPVbTuBWqe8p4nun21F0a_g-KsYSIwpJvYLKAaC2Bzjzoh3G0wI_FjxJ51sEXdejfJkDgZ0IYcv-/s500/Untitled%20design%20(12).png" alt="Profile Photo" class="h-full w-full object-cover">
         </div>
+    </div>
 
-        <div id="popup-message" class="modal">
-            <div class="modal-content">
-                <h2>Points Updated Successfully!</h2>
-                <button onclick="closePopup()">OK</button>
-            </div>
+    <footer class="bg-gray-800 shadow-md fixed bottom-0 left-0 w-full">
+        <nav class="flex justify-around p-2">
+            <a href="#" class="text-yellow-400 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18m-9 5h9" />
+                </svg>
+                <span class="block text-sm">Dashboard</span>
+            </a>
+            <a href="#" class="text-yellow-400 text-center" onclick="shareTokens()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 12h14" />
+                </svg>
+                <span class="block text-sm">Share</span>
+            </a>
+            <a href="#" class="text-gray-400 text-center" onclick="showModal('coming-soon-modal')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7l-4 4m0 0l-4-4m4 4V3m0 18V13" />
+                </svg>
+                <span class="block text-sm">Withdraw</span>
+            </a>
+        </nav>
+    </footer>
+
+    <!-- Modals -->
+    <div id="coming-soon-modal" class="modal">
+        <div class="modal-content">
+            <h2>Coming Soon!</h2>
+            <button onclick="closeModal()">Close</button>
         </div>
     </div>
 
-    <footer class="bg-gray-800 text-white p-4 text-center">
-        <p>&copy; 2023 All rights reserved.</p>
-    </footer>
+   
+    </div>
+
+    <!-- Form submission modal for success message -->
+    <div id="form-submission-modal" class="modal">
+        <div class="modal-content">
+            <h2>Points Updated Successfully! Check Back After 12 Hours.</h2>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
 
     <script>
-        function followChannel() {
-            const button = document.querySelector('.follow-button');
-            const tokenNumber = document.getElementById('token-number');
-            const submitButton = document.getElementById('submit-button');
+    
+window.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splash-screen');
+    const rocket = document.querySelector('.rocket');
 
-            if (button.textContent === 'Following') return;
+    setTimeout(() => {
+        rocket.classList.add('animate');
+    }, 500); // Delay before the rocket starts flying
 
+    setTimeout(() => {
+        splashScreen.classList.add('hidden');
+    }, 2500); // Hide splash screen after the animation
+});
+
+    
+        // Function to show the modal
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.querySelectorAll('.modal.active').forEach(modal => modal.classList.remove('active'));
+        }
+
+        // Function to ask for the user's name and set it in local storage and on the form
+        function askForName() {
+            let userName = localStorage.getItem('userName');
+            if (!userName) {
+                userName = prompt("Please enter your name:");
+                if (userName) {
+                    localStorage.setItem('userName', userName);
+                } else {
+                    userName = "User";
+                }
+            }
+            document.getElementById('greeting-text').innerText = Hi, ${userName}!;
+            document.getElementById('user-name').value = userName; // Set the hidden field value
+        }
+
+        // Initialize the name when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', askForName);
+
+        // Retrieve tokens, share count, and last update timestamp from local storage
+        let tokens = parseInt(localStorage.getItem('tokens')) || 0;
+        let shareCount = parseInt(localStorage.getItem('shareCount')) || 0;
+        let hasFollowed = localStorage.getItem('hasFollowed') === 'true';
+        let lastUpdateTimestamp = parseInt(localStorage.getItem('lastUpdateTimestamp')) || 0;
+        const updateInterval = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+
+        // Display current token count
+        document.getElementById('token-number').innerText = tokens;
+
+        // Function to handle sharing tokens
+        
+        function shareTokens() {
+        // Generate a unique referral ID (you can customize this)
+        const referralId = 'REF' + Math.floor(Math.random() * 1000000);
+        
+        // Open Telegram with a predefined message containing the referral ID
+        const telegramMessage = Join our channel using this referral link and earn points! Referral ID: ${referralId};
+        const telegramLink = https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)};
+        window.open(telegramLink, '_blank');
+        
+        // Delay for 60 seconds before awarding points
+        setTimeout(() => {
             let tokens = parseInt(localStorage.getItem('tokens')) || 0;
-
-            button.textContent = 'Following';
-            button.classList.add('disabled-button');
-            tokens += 10;
+            tokens += 30;
             localStorage.setItem('tokens', tokens);
-            tokenNumber.textContent = tokens;
+            document.getElementById('token-number').innerText = tokens;
+        }, 60000); // 60 seconds (1 minute)
+    }
+    
+    
 
-            // Enable submit button
-            submitButton.classList.remove('disabled-button');
+function followChannel() {
+    if (hasFollowed) {
+        alert("You have already followed the channel!");
+        return;
+    }
 
-            const updateTimeMessage = document.getElementById('update-time-message');
-            const userName = prompt("Enter your name to update points:");
-            
-            if (userName) {
-                document.getElementById('user-name').value = userName;
-                document.getElementById('tokens').value = tokens;
+    showModal('submission-modal'); // Show submission modal immediately
 
-                // Calculate time left until the next update
-                const currentTime = new Date().getTime();
-                const nextUpdateTime = currentTime + (3 * 60 * 60 * 1000);
-                localStorage.setItem('nextUpdateTime', nextUpdateTime);
+    // Delay for 60 seconds before awarding points
+    setTimeout(() => {
+        tokens += 1000;
+        localStorage.setItem('tokens', tokens);
+        document.getElementById('token-number').innerText = tokens;
+        localStorage.setItem('hasFollowed', 'true');
+        hasFollowed = true;
 
-                updateTimeMessage.textContent = 'You can update points again in 3 hours.';
-            } else {
-                alert("Name is required to update points.");
-            }
+        // Close the submission modal after awarding points
+        closeModal();
+    }, 60000); // 60 seconds (1 minute)
+
+    // Redirect to the Telegram channel immediately
+    window.location.href = 'https://t.me/RocketPoints';
+}
+
+
+        
+
+        // Function to handle following the 
+// Function to handle the points update button
+function handlePointsUpdate() {
+    const now = Date.now();
+    if (now - lastUpdateTimestamp < updateInterval) {
+        alert("You can only update points once every 12 hours.");
+        return;
+    }
+
+    // Set the last update timestamp
+    lastUpdateTimestamp = now;
+    localStorage.setItem('lastUpdateTimestamp', lastUpdateTimestamp);
+
+    // Show the success modal
+    showModal('form-submission-modal');
+
+    // Wait for a few seconds before closing the modal and updating the token count
+    setTimeout(() => {
+        closeModal();
+        updateTimeCounter(); // Update the time counter message
+        document.getElementById('submit-button').classList.add('disabled-button');
+        document.getElementById('submit-button').disabled = true;
+    }, 3000);
+}
+
+// Event listener for form submission
+document.getElementById('token-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Ensure the latest token count is used
+    const tokenField = document.getElementById('tokens');
+    tokenField.value = localStorage.getItem('tokens') || '0';
+
+    // Call handlePointsUpdate() function
+    handlePointsUpdate();
+
+    // Simulate form submission
+    fetch(event.target.action, {
+        method: 'POST',
+        body: new FormData(event.target)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Optionally, handle success
+            console.log('Form submitted successfully!');
+        } else {
+            alert('Failed to submit data. Please try again.');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
+});
 
-        function closePopup() {
-            const popupMessage = document.getElementById('popup-message');
-            popupMessage.classList.remove('active');
-        }
 
-        window.onload = function() {
-            const splashScreen = document.getElementById('splash-screen');
-            const rocketImage = document.querySelector('.rocket-image');
-
-            setTimeout(() => {
-                splashScreen.style.opacity = 0;
-                rocketImage.classList.add('animate');
-            }, 1000);
-
-            setTimeout(() => {
-                splashScreen.classList.add('hidden');
-            }, 5000);
-
-            // Set the greeting text with the user's name if available
-            const userName = localStorage.getItem('userName');
-            if (userName) {
-                document.getElementById('greeting-text').textContent = `Hi, ${userName}!`;
+        // Initialize the state of the "Update Points!" button
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = Date.now();
+            if (now - lastUpdateTimestamp < updateInterval) {
+                document.getElementById('submit-button').classList.add('disabled-button');
+                document.getElementById('submit-button').disabled = true;
+                updateTimeCounter(); // Update the time counter message
+                setInterval(updateTimeCounter, 1000); // Update every second
             }
+        });
 
-            // Retrieve tokens from localStorage
-            const tokenNumber = document.getElementById('token-number');
-            const tokens = parseInt(localStorage.getItem('tokens')) || 0;
-            tokenNumber.textContent = tokens;
-
-            // Check if 3 hours have passed since the last update
-            const submitButton = document.getElementById('submit-button');
-            const nextUpdateTime = parseInt(localStorage.getItem('nextUpdateTime'));
-            const currentTime = new Date().getTime();
-            if (nextUpdateTime && currentTime < nextUpdateTime) {
-                submitButton.classList.add('disabled-button');
-                const remainingTime = nextUpdateTime - currentTime;
-                const remainingHours = Math.floor(remainingTime / (60 * 60 * 1000));
-                const remainingMinutes = Math.floor((remainingTime % (60 * 60 * 1000)) / (60 * 1000));
-                document.getElementById('update-time-message').textContent = `You can update points again in ${remainingHours} hours and ${remainingMinutes} minutes.`;
-            }
-        };
     </script>
+
 </body>
 </html>
