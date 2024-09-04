@@ -7,9 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <style>
-    
-    
-.splash-screen {
+        /* Existing styles omitted for brevity */
+        
+      .splash-screen {
     position: fixed;
     top: 0;
     left: 0;
@@ -79,6 +79,7 @@
             font-family: 'Raleway', sans-serif;
             font-size: 1.5rem; /* Adjust the size as needed */
         }
+
         .modal {
             position: fixed;
             top: 0;
@@ -107,7 +108,7 @@
         }
         .modal-content h2 {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #fbbf24;
         }
         .modal-content button {
@@ -124,79 +125,17 @@
         .modal-content button:hover {
             background-color: #e8a823;
         }
-        footer {
-            border-top: 2px solid #fbbf24;
-            border-radius: 15px 15px 0 0;
-        }
-        .circle-icon {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: #fbbf24;
-            border-radius: 50%;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        .follow-card {
-            background-color: #2c2c2c;
-            border: 2px solid #fbbf24;
-            border-radius: 10px;
-            padding: 10px; /* Adjust padding */
-            margin: 10px;  /* Adjust margin */
-            text-align: center;
-            max-width: 300px; /* Adjust width to fit the screen */
-            margin: 0 auto; /* Center the card horizontally */
-        }
-        .follow-card h2 {
-            font-family: 'Poppins', sans-serif;
-            color: #fbbf24;
-            font-size: 1rem;
-        }
-        .follow-button {
-            margin-top: 4px;
-            padding: 10px 15px;
-            background-color: #fbbf24;
-            color: #1c1c1c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s ease;
-        }
-        .follow-button:hover {
-            background-color: #e8a823;
-        }
-        .submit-button {
-            margin-top: 4px;
-            padding: 10px 15px;
-            background-color: #34d399;
-            color: #1c1c1c;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s ease;
-        }
-        .submit-button:hover {
-            background-color: #2f9f80;
-        }
-        .disabled-button {
-            background-color: #4a4a4a;
-            cursor: not-allowed;
-        }
     </style>
 </head>
 <body class="bg-gray-900 text-white flex flex-col justify-between min-h-screen">
 
-   
-<div id="splash-screen" class="splash-screen flex items-center justify-center">
-    <div class="rocket">
-        <img src=https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMG6TZi7SoaKF7FOIlipx7pQ8BEsKrE9EQiDEHHNZeNZTsjsYeo1BE1MPsdk0HaYTVSqY4lI7Oitdc7nmyqky_FWEKDv28uuODirrVK9_aSEgMv-vA9SB_502SowbZpbvKNup5_BFYvmwtLui79XgDcdUMf_zPDrjmqka2NpqDtmusth04iClr1hm9uo8/s500/rocket-removebg-preview.png" alt="Rocket" class="rocket-image">
-        <div class="smoke"></div>
+    <div id="splash-screen" class="splash-screen flex items-center justify-center">
+        <div class="rocket">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMG6TZi7SoaKF7FOIlipx7pQ8BEsKrE9EQiDEHHNZeNZTsjsYeo1BE1MPsdk0HaYTVSqY4lI7Oitdc7nmyqky_FWEKDv28uuODirrVK9_aSEgMv-vA9SB_502SowbZpbvKNup5_BFYvmwtLui79XgDcdUMf_zPDrjmqka2NpqDtmusth04iClr1hm9uo8/s500/rocket-removebg-preview.png" alt="Rocket" class="rocket-image">
+            <div class="smoke"></div>
+        </div>
     </div>
-</div>
 
-   
     <div class="flex flex-col items-center">
         <div class="follow-card">
             <h2>Follow our Channel to Earn More Points!</h2>
@@ -256,9 +195,6 @@
         </div>
     </div>
 
-   
-    </div>
-
     <!-- Form submission modal for success message -->
     <div id="form-submission-modal" class="modal">
         <div class="modal-content">
@@ -267,22 +203,27 @@
         </div>
     </div>
 
+    <div id="follow-alert-modal" class="modal">
+        <div class="modal-content">
+            <h2>You have already followed the channel!</h2>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
     <script>
-    
-window.addEventListener('DOMContentLoaded', () => {
-    const splashScreen = document.getElementById('splash-screen');
-    const rocket = document.querySelector('.rocket');
+        window.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            const rocket = document.querySelector('.rocket');
 
-    setTimeout(() => {
-        rocket.classList.add('animate');
-    }, 500); // Delay before the rocket starts flying
+            setTimeout(() => {
+                rocket.classList.add('animate');
+            }, 500); // Delay before the rocket starts flying
 
-    setTimeout(() => {
-        splashScreen.classList.add('hidden');
-    }, 2500); // Hide splash screen after the animation
-});
+            setTimeout(() => {
+                splashScreen.classList.add('hidden');
+            }, 2500); // Hide splash screen after the animation
+        });
 
-    
         // Function to show the modal
         function showModal(modalId) {
             document.getElementById(modalId).classList.add('active');
@@ -293,151 +234,78 @@ window.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.modal.active').forEach(modal => modal.classList.remove('active'));
         }
 
-        // Function to ask for the user's name and set it in local storage and on the form
-        function askForName() {
-            let userName = localStorage.getItem('userName');
-            if (!userName) {
-                userName = prompt("Please enter your name:");
-                if (userName) {
-                    localStorage.setItem('userName', userName);
-                } else {
-                    userName = "User";
-                }
-            }
-            document.getElementById('greeting-text').innerText = `Hi, ${userName}!`;
-            document.getElementById('user-name').value = userName; // Set the hidden field value
-        }
-
-        // Initialize the name when the DOM is loaded
-        document.addEventListener('DOMContentLoaded', askForName);
-
-        // Retrieve tokens, share count, and last update timestamp from local storage
-        let tokens = parseInt(localStorage.getItem('tokens')) || 0;
-        let shareCount = parseInt(localStorage.getItem('shareCount')) || 0;
         let hasFollowed = localStorage.getItem('hasFollowed') === 'true';
-        let lastUpdateTimestamp = parseInt(localStorage.getItem('lastUpdateTimestamp')) || 0;
+        let tokens = parseInt(localStorage.getItem('tokens')) || 0;
+        document.getElementById('token-number').innerText = tokens;
+
+        const lastUpdateTimestamp = parseInt(localStorage.getItem('lastUpdateTimestamp')) || 0;
         const updateInterval = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
 
-        // Display current token count
-        document.getElementById('token-number').innerText = tokens;
-
-        // Function to handle sharing tokens
-        
         function shareTokens() {
-        // Generate a unique referral ID (you can customize this)
-        const referralId = 'REF' + Math.floor(Math.random() * 1000000);
-        
-        // Open Telegram with a predefined message containing the referral ID
-        const telegramMessage = `Join our channel using this referral link and earn points! Referral ID: ${referralId}`;
-        const telegramLink = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)}`;
-        window.open(telegramLink, '_blank');
-        
-        // Delay for 60 seconds before awarding points
-        setTimeout(() => {
-            let tokens = parseInt(localStorage.getItem('tokens')) || 0;
-            tokens += 30;
-            localStorage.setItem('tokens', tokens);
-            document.getElementById('token-number').innerText = tokens;
-        }, 60000); // 60 seconds (1 minute)
-    }
-    
-    
+            // Generate a unique referral ID (you can customize this)
+            const referralId = 'REF' + Math.floor(Math.random() * 1000000);
 
-function followChannel() {
-    if (hasFollowed) {
-        alert("You have already followed the channel!");
-        return;
-    }
+            // Open Telegram with a predefined message containing the referral ID
+            const telegramMessage = `Join our channel using this referral link and earn points! Referral ID: ${referralId}`;
+            const telegramLink = `https://t.me/share/url?url=${encodeURIComponent('https://t.me/rocketpointsbot/RocketPoints')}?ref=${encodeURIComponent(referralId)}&text=${encodeURIComponent(telegramMessage)}`;
+            window.open(telegramLink, '_blank');
 
-    showModal('submission-modal'); // Show submission modal immediately
-
-    // Delay for 60 seconds before awarding points
-    setTimeout(() => {
-        tokens += 1000;
-        localStorage.setItem('tokens', tokens);
-        document.getElementById('token-number').innerText = tokens;
-        localStorage.setItem('hasFollowed', 'true');
-        hasFollowed = true;
-
-        // Close the submission modal after awarding points
-        closeModal();
-    }, 60000); // 60 seconds (1 minute)
-
-    // Redirect to the Telegram channel immediately
-    window.location.href = 'https://t.me/RocketPoints';
-}
-
-
-        
-
-        // Function to handle following the 
-// Function to handle the points update button
-function handlePointsUpdate() {
-    const now = Date.now();
-    if (now - lastUpdateTimestamp < updateInterval) {
-        alert("You can only update points once every 12 hours.");
-        return;
-    }
-
-    // Set the last update timestamp
-    lastUpdateTimestamp = now;
-    localStorage.setItem('lastUpdateTimestamp', lastUpdateTimestamp);
-
-    // Show the success modal
-    showModal('form-submission-modal');
-
-    // Wait for a few seconds before closing the modal and updating the token count
-    setTimeout(() => {
-        closeModal();
-        updateTimeCounter(); // Update the time counter message
-        document.getElementById('submit-button').classList.add('disabled-button');
-        document.getElementById('submit-button').disabled = true;
-    }, 3000);
-}
-
-// Event listener for form submission
-document.getElementById('token-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Ensure the latest token count is used
-    const tokenField = document.getElementById('tokens');
-    tokenField.value = localStorage.getItem('tokens') || '0';
-
-    // Call handlePointsUpdate() function
-    handlePointsUpdate();
-
-    // Simulate form submission
-    fetch(event.target.action, {
-        method: 'POST',
-        body: new FormData(event.target)
-    })
-    .then(response => {
-        if (response.ok) {
-            // Optionally, handle success
-            console.log('Form submitted successfully!');
-        } else {
-            alert('Failed to submit data. Please try again.');
+            // Delay for 60 seconds before awarding points
+            setTimeout(() => {
+                tokens += 30;
+                localStorage.setItem('tokens', tokens);
+                document.getElementById('token-number').innerText = tokens;
+                showAlert("You've earned 30 tokens!");
+            }, 60000); // 60 seconds (1 minute)
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
-});
 
+        function followChannel() {
+            if (hasFollowed) {
+                showAlert("You have already followed the channel!");
+                return;
+            }
 
-        // Initialize the state of the "Update Points!" button
-        document.addEventListener('DOMContentLoaded', function() {
+            showModal('submission-modal'); // Show submission modal immediately
+
+            // Delay for 60 seconds before awarding points
+            setTimeout(() => {
+                tokens += 1000;
+                localStorage.setItem('tokens', tokens);
+                document.getElementById('token-number').innerText = tokens;
+                localStorage.setItem('hasFollowed', 'true');
+                hasFollowed = true;
+
+                // Close the submission modal after awarding points
+                closeModal();
+                showAlert("You've earned 1000 tokens for following!");
+            }, 60000); // 60 seconds (1 minute)
+
+            // Redirect to the Telegram channel immediately
+            window.location.href = 'https://t.me/RocketPoints';
+        }
+
+        // Function to handle points update button
+        function handlePointsUpdate() {
             const now = Date.now();
             if (now - lastUpdateTimestamp < updateInterval) {
+                showAlert("You can only update points once every 12 hours.");
+                return;
+            }
+
+            // Set the last update timestamp
+            localStorage.setItem('lastUpdateTimestamp', now);
+
+            // Show the success modal
+            showModal('form-submission-modal');
+
+            // Wait for a few seconds before closing the modal and updating the token count
+            setTimeout(() => {
+                closeModal();
                 document.getElementById('submit-button').classList.add('disabled-button');
                 document.getElementById('submit-button').disabled = true;
-                updateTimeCounter(); // Update the time counter message
-                setInterval(updateTimeCounter, 1000); // Update every second
-            }
-        });
-
+                showAlert("Points updated successfully!");
+            }, 3000);
+        }
     </script>
-
 </body>
 </html>
