@@ -345,7 +345,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function followChannel() {
     if (hasFollowed) {
-        alert("You have already followed the channel!");
+        ("You have already followed the channel!");
         return;
     }
 
@@ -375,7 +375,7 @@ function followChannel() {
 function handlePointsUpdate() {
     const now = Date.now();
     if (now - lastUpdateTimestamp < updateInterval) {
-        alert("You can only update points once every 12 hours.");
+        ("You can only update points once every 12 hours.");
         return;
     }
 
